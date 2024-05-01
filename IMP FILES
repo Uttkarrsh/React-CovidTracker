@@ -1,0 +1,128 @@
+1.) To compute step response of a second order system for different
+conditions
+%G(s) = (4500*k) / (s^2 + 361.2s + 4500k)
+k = 7.248;
+num = [4500*k];
+den = [1 361.2 4500*k];
+sys1 = tf(num,den);
+step(sys1);
+grid;
+k = 14.5;
+num = [4500*k];
+den = [1 361.2 4500*k];
+sys2 = tf(num,den);
+step(sys2);
+grid;
+k = 181.2;
+num = [4500*k];
+den = [1 361.2 4500*k];
+sys3 = tf(num,den);
+step(sys3); grid;
+
+
+2.) To compute Root Locus of different control systems
+clc;
+close all;
+%G(s)/H(s) = (k) / (s*(s+4)*(s^2+4s+20))
+num = [1];
+den = [1 8 36 80 0];
+sys1 = tf(num,den);
+figure;
+rlocus(sys1);
+grid;
+%G(s)/H(s) = (k*(s+3)) / (s*(s+5)*(s+6)*(s^2+2s+2)
+num = [1];
+den = [1 13 52 82 60 0];
+sys2 = tf(num,den);
+figure;
+rlocus(sys2);
+grid;
+%G(s)/H(s) = (k*(s+2)) / (s*(s^2+2s+a) ; a=1
+num = [1 2];
+den = [1 2 1 0];
+sys3 = tf(num,den);
+
+figure;
+rlocus(sys3);
+grid;
+%G(s)/H(s) = (k*(s+2)) / (s*(s^2+2s+a) ; a=1.85
+num = [1 2];
+den = [1 2 1.185 0];
+sys4 = tf(num,den);
+figure;
+rlocus(sys4);
+grid;
+%G(s)/H(s) = (k*(s+2)) / (s*(s^2+2s+a) ; a=3
+num = [1 2];
+den = [1 2 3 0];
+sys5 = tf(num,den);
+figure;
+rlocus(sys5);
+grid;
+
+
+3.) To compute Bode Plots of different order control systems
+clc;
+close all;
+%L(s) = 2500 / (s*(s+5)*(s+10));
+num = [2500];
+den = [1 15 50 0];
+sys1 = tf(num,den);
+figure;
+bode(sys1);
+grid;
+%L(s) = (100k*(s+5)*(s+4)) / ((s^3)*(s+100)*(s+200)); k=1
+num = [100 4500 20000];
+den = [1 300 20000 0 0];
+sys2 = tf(num,den);
+figure;
+bode(sys2);
+grid;
+
+
+4.) To compute Nyquist plot of different order control systems
+clc;
+close all;
+%L(s) = (k) / (s*(s+2)*(s+10))
+num = [100];
+den = [1 12 20 0];
+sys1 = tf(num,den);
+figure;
+nyquist(sys1);
+grid;
+%L(s) = (k*(s+2)) / (s^3+3s^2+10)
+num = [1];
+den = [1 3 0 10];
+sys2 = tf(num,den);
+figure;
+nyquist(sys2);
+grid;
+%L(s) = (k) / (1+Tls) ; Tl>0
+num = [1];
+den = [2 1];
+sys3 = tf(num,den);
+
+figure;
+nyquist(sys3);
+grid;
+%L(s) = (k) / (s)*(1+Tls) ; Tl>0
+num = [1];
+den = [2 1 0];
+sys4 = tf(num,den);
+figure;
+nyquist(sys4);
+grid;
+%L(s) = (k) / (s^2)*(1+Tls) ; Tl>0
+num = [1];
+den = [1 1 0 0];
+sys5 = tf(num,den);
+figure;
+nyquist(sys5);
+grid;
+%L(s) = (k) / (s^3)*(1+Tls) ; Tl>0
+num = [1];
+den = [1 1 0 0 0];
+sys5 = tf(num,den);
+figure;
+nyquist(sys5);
+grid;
